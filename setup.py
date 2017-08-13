@@ -8,15 +8,17 @@ except IOError:
 
 setup(
     name="afk",
-    version="0.1.2",
+    version="0.1.3",
     description="A command-line tool called afk which gives you a simple reminder when you get back.",
     license="MIT",
     author="Alex Myasoedov",
     author_email="msoedov@gmail.com",
-    packages=[],
+    packages=['afk'],
     install_requires=['pyobjc', 'pync', 'fire'],
     long_description=long_description,
-    console_scripts=['afk=afk.main'],
+    entry_points={
+        "console_scripts": ['afk=afk.afk:main']
+    },
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",

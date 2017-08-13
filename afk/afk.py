@@ -30,9 +30,11 @@ class App(NSObject):
             None
         )
 
-    def receiveWakeNotification_(self, notification):
-        print(notification)
+    def show_reminder(self):
         pync.Notifier.notify(self.reminder, title='Afk', sender='com.apple.reminders')
+
+    def receiveWakeNotification_(self, notification):
+        self.show_reminder()
         NSApp().terminate_(self)
 
 
@@ -44,7 +46,12 @@ def run(reminder, *reminders):
     sharedapp.setDelegate_(app)
     app.applicationDidFinishLaunching_(None)
     print("Reminder saved")
-    AppHelper.runConsoleEventLoop(installInterrupt=True)
+    print("Waiting ...")
+    try:
+        AppHelper.runConsoleEventLoop(installInterrupt=True)
+    except KeyboardInterrupt:
+        print('Interrupt, pending reminders:')
+        app.show_reminder()
 
 
 def main():
