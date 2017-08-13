@@ -47,5 +47,9 @@ def run(reminder, *reminders):
     AppHelper.runConsoleEventLoop(installInterrupt=True)
 
 
+def main():
+    return fire.Fire(run)
+
+
 if __name__ == "__main__":
-    fire.Fire(run)
+    main()
