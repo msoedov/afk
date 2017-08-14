@@ -17,6 +17,10 @@ A command-line tool called afk which gives you a simple reminder when you get ba
 pip install afk
 ```
 
+```
+brew install terminal-notifier
+```
+
 ### Notes:
 
 - Works only for OSX
